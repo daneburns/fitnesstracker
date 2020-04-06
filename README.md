@@ -12,7 +12,7 @@
   5. Questions 
 
 ## Installation: 
- You can download this package and run it locally, or you can visit the deployed version here: 
+ You can download this package and run it locally, or you can visit the deployed version here: https://radiant-retreat-88389.herokuapp.com/
 
 ## License: 
  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
