@@ -2,6 +2,7 @@ const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 const Workout = require("./models/Workout");
+const path = require("path")
 
 const PORT = process.env.PORT || 3000;
 
@@ -40,7 +41,7 @@ app.post("/api/workouts", (req, res) => {
 });
 
 app.put("/api/workouts/:id", (req, res) => {
-  Workout.findById(req.params.id, function(err, result){
+  Workout.findById({_id: req.params.id}, function(err, result){
     if (err) throw err
     console.log(result.exercises)
     result.exercises.push(req.body)
@@ -63,15 +64,20 @@ app.get("/api/workouts/range", (req,res) => {
 
 // })
 
-app.get("/exercise", (req, res) => {
-  res.redirect(`/exercise.html`);
+  app.get("/exercise", (req, res) => {
+    res.sendFile(path.join(__dirname + "/public/exercise.html"));
 });
+
 
 // app.get("/exercise?id=", (req, res) => {
 //   console.log(req.params)
 //   Workout.findOne({ _id: req.params.id}).then(e => {console.log(e)})
 
 // })
+
+app.get("/stats", (req,res) => {
+  res.redirect('/stats.html')
+})
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
